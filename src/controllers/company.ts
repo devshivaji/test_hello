@@ -125,6 +125,7 @@ export const login = async (_: Request, res: Response) => {
   });
   res.cookie("token", token, {
     httpOnly: true,
+    sameSite:false
   });
   res.status(200).json({
     success: true,
