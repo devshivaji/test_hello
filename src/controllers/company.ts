@@ -124,7 +124,7 @@ export const login = async (_: Request, res: Response) => {
   const token = sign(companyPayload, process.env.JWT_SECRET_KEY!, {
     expiresIn: "1d",
   });
-  res.cookie("token", token);
+  res.cookie("token", token,{sameSite:false});
   res.status(200).json({
     origin:_.headers.origin,
     success: true,
