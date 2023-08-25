@@ -15,14 +15,17 @@ const port = process.env.PORT || 8080;
 app.use(urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cookieParser());
+// app.use(
+//   cors({
+//     credentials: true,
+//     maxAge: 28800,
+//     origin: process.env.FRONT_END_ORIGIN,
+//     methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
+//   })
+// );
 app.use(
-  cors({
-    credentials: true,
-    maxAge: 28800,
-    origin: process.env.FRONT_END_ORIGIN,
-    methods: ["GET", "POST", "PUT", "PATCH", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-  })
+  cors()
 );
 
 app.use("/company", companyRouter);
