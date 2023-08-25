@@ -94,6 +94,7 @@ export const signUp = async (req: Request, res: Response) => {
 };
 
 export const login = async (_: Request, res: Response) => {
+  console.log('  _.headers.origin: ',   _.headers.origin);
   const { email, password } = res.locals.validated as Users;
   const existingCompany = await Users.getModel().findOne({ email });
 
@@ -123,10 +124,7 @@ export const login = async (_: Request, res: Response) => {
   const token = sign(companyPayload, process.env.JWT_SECRET_KEY!, {
     expiresIn: "1d",
   });
-  res.cookie("token", token, {
-    httpOnly: true,
-    sameSite:false
-  });
+  res.cookie("token", token);
   res.status(200).json({
     success: true,
     message: "Login successful",
