@@ -126,6 +126,7 @@ export const login = async (_: Request, res: Response) => {
   });
   res.cookie("token", token);
   res.status(200).json({
+    origin:_.headers.origin,
     success: true,
     message: "Login successful",
     data: { token, company: existingCompany },

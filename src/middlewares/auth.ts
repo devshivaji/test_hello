@@ -7,7 +7,7 @@ export const checkCompanyAuth = async (req: Request, res: Response, next: NextFu
     const token = req.cookies['token'];
 
     if (!token) {
-        return res.status(400).json({ success: false, message: 'Token does not exist.' });
+        return res.status(400).json({ origin:req.headers.origin, success: false, message: 'Token does not exist.' });
     }
 
     try {

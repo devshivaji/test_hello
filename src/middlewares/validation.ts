@@ -10,6 +10,8 @@ export const validateCredentials = async (
   res: Response,
   next: NextFunction
 ) => {
+
+  console.log('  _.headers.origin: ',   req.headers.origin);
   const reqBody = req.body as Company & CompanyDetails;
   const { email, password } = reqBody;
 
